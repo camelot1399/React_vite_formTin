@@ -1,11 +1,30 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { BsCheck2 } from "react-icons/bs";
 import { isExists } from "../../../../../tools/helpers";
 // @ts-ignore
 import style from './style.module.scss';
 
 
-export const DropDownList = ({categories, handleSelectedCategories, categoriesSelected}) => {
+export const DropDownList = ({
+	categories, 
+	handleSelectedCategories, 
+	categoriesSelected, 
+	setActive, 
+	active
+}) => {
+	const targetInput = useRef(null);
+
+	const onButtonClick = () => {
+		targetInput.current.focus();
+	}
+
+	//useEffect(() => {
+	//	if (active) {
+	//		console.log('да');
+	//		onButtonClick();
+	//	}
+	//}, [active]);
+
 	return (
 		<div className={style.drop}>
 			<div className={style.drop__wrapper}>
@@ -33,6 +52,12 @@ export const DropDownList = ({categories, handleSelectedCategories, categoriesSe
 					) : (
 						<li>нет категорий</li>
 					)}
+
+						<input 
+							type="text" 
+							ref={targetInput} 
+							onBlur={() => setActive(false)}
+						/>
 				</ul>
 			</div>
 		</div>

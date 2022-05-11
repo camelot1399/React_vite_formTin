@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Input } from "../common/input/input/Input";
 import { InputWithChoise } from "../common/input/inputWithChoice/InputWithChoise";
 import { Container } from "../container/Container";
 import { Wrapper } from '../wrapper/Wrapper';
@@ -29,6 +30,10 @@ export const Form = () => {
 						categories={categories}
 						setCategories={setCategories}
 						label='Выберите повышенный кэшбэк (четыре категории)'
+					/>
+
+					<Input 
+						label="Введите Имя и Фамилию"
 					/>
 				</div>
 				<div className={style.form__right}>

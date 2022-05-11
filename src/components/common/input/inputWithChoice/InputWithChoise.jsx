@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Wrapper } from "../../../wrapper/Wrapper";
 // @ts-ignore
 import style from './input.module.scss';
@@ -10,6 +10,7 @@ import { isExists } from "../../../../../tools/helpers";
 export const InputWithChoise = ({categories, setCategories, label}) => {
 
 	const [categoriesSelected, setCategoriesSelected] = useState([]);
+	
 
 	const [active, setActive] = useState(false);
 
@@ -66,7 +67,7 @@ export const InputWithChoise = ({categories, setCategories, label}) => {
 					>
 						<div className={style.input__wrap}>
 							<div>
-								<div className={style.input__label}>{label}</div>
+								<div className={[style.input__label, categoriesSelected.length ? style.active : ''].join(' ')}>{label}</div>
 								<div className={style.selectedCategories}>
 									{getCategoriesList()}
 								</div>
@@ -88,6 +89,8 @@ export const InputWithChoise = ({categories, setCategories, label}) => {
 							categories={categories}
 							handleSelectedCategories={handleSelectedCategories}
 							categoriesSelected={categoriesSelected}
+							setActive={setActive}
+							active={active}
 						/>
 					)}
 				</div>

@@ -1,10 +1,11 @@
 .drop {
 	width: 100%;
-	border: 1px solid rgba(10, 10, 1, 0.2);;
-	box-shadow: 0px 5px 10px 5px rgba(10, 10, 1, 0.2);
+	border: 1px solid rgba(10, 10, 1, 0.1);
+	box-shadow: 10px 10px 10px #cccccc, 10px 10px 10px #ffffff, 0 0 0 #cccccc inset, 0 0 0 #ffffff inset;
 	position: absolute;
 	top: 100%;
 	z-index: 3;
+	border-radius: 6px;
 	&__ul {}
 	&__li {
 		font-size: 16px;
