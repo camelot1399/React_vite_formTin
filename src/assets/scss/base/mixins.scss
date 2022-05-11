@@ -1,0 +1,33 @@
+@import './variables.scss';
+// Mixins
+// --------------------------------------------------
+
+@mixin mobile {
+    @media only screen and (max-width: #{$mobileWidth}px) {
+        @content;
+    }
+}
+
+@mixin largeMobile {
+    @media (min-width: #{$largeMobileWidth}) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: #{$tabletWidth}px) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: #{$desktopWidth}px) {
+        @content;
+    }
+}
+
+@mixin largeDesktop {
+    @media (min-width: #{$largeDesktopWidth}px) {
+        @content;
+    }
+}

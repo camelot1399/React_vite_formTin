@@ -1,0 +1,17 @@
+@import '../../assets/scss/base/variables.scss';
+
+.form {
+	display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+	width: 800px;
+	gap: 20px;
+	&__label {
+	}
+	&__left {
+		flex: 0 1 700px;
+	}
+	&__right {
+		flex: 0 1 100px;
+	}
+}
