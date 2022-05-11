@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Wrapper } from "../../../wrapper/Wrapper";
 // @ts-ignore
 import style from './input.module.scss';
 
-
-import { BsChevronDown } from "react-icons/bs";
+import { BsChevronDown, BsCheck } from "react-icons/bs";
 import { DropDownList } from "../../dropDown/dropDownList/DropDownList";
+import { isExists } from "../../../../../tools/helpers";
 
 export const InputWithChoise = ({categories, setCategories, label}) => {
 
@@ -33,7 +33,7 @@ export const InputWithChoise = ({categories, setCategories, label}) => {
 	}
 
 	const handleSelectedCategories = (item) => {
-		if (isExists(item)) {
+		if (isExists(item, categoriesSelected)) {
 			const filteredCategories = categoriesSelected.filter(cat => cat.id !== item.id);
 			setCategoriesSelected(filteredCategories);
 		} else {
@@ -48,14 +48,18 @@ export const InputWithChoise = ({categories, setCategories, label}) => {
 		}
 	}
 
-	const isExists = (category) => {
-		return categoriesSelected.includes(category);
+	const isValidCountSelectedCategories = () => {
+		if (categoriesSelected.length === 4) {
+			return true
+		} else {
+			return false
+		}
 	}
 
 	return (
 		<>
 			<Wrapper>
-				<div className={style.field}>
+				<div className={style.fields}>
 					<div 
 						className={[style.input, active ? style.input__active : ''].join(' ')}
 						onClick={() => setActive(!active)}
@@ -68,7 +72,14 @@ export const InputWithChoise = ({categories, setCategories, label}) => {
 								</div>
 							</div>
 
-							<BsChevronDown />
+							{isValidCountSelectedCategories() ? (
+								<BsCheck color="green" size="24px" />
+							) : (
+								<div className={style.input__dropIcon}>
+									<BsChevronDown />
+								</div>
+							)}
+							
 						</div>
 					</div>
 

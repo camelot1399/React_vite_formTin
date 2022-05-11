@@ -1,4 +1,4 @@
-.field {
+.fields {
 	width: 100%;
 	position: relative;
 }
@@ -9,6 +9,7 @@
 	border-radius: 6px;
 	width: 100%;	
 	transition: all 0.6s;
+	cursor: pointer;
 	
 	&__wrap {
 		padding: 0 16px;
@@ -17,17 +18,31 @@
 		justify-content: space-between;
 		height: 50px;
 	}
+	&__dropIcon {
+		transition: all 0.2s;
+	}
+
 	&__active {
 		background-color: white;
 		border: 1px solid #ccc;
 		& .drop {
 			background-color: red;
 		}
+		& .input__dropIcon {
+			transform: rotate(180deg);
+		}
+		& .input__label {
+			transform: translate(-6px, -6px);
+			font-size: 12px;
+		}
 	}
 	&__label {
 		color: var(--colors-label);
 		font-size: 14px;
+		transition: all 0.2s;
 	}
+
+	
 	
 }
 
