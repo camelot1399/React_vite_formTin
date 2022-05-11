@@ -1,0 +1,57 @@
+.drop {
+	width: 100%;
+	border: 1px solid rgba(10, 10, 1, 0.2);;
+	box-shadow: 0px 5px 10px 5px rgba(10, 10, 1, 0.2);
+	position: absolute;
+	top: 100%;
+	z-index: 3;
+	&__ul {}
+	&__li {
+		font-size: 16px;
+		cursor: pointer;
+		
+		&:hover {
+			background-color: var(--bg-form);
+		}
+	}
+	&__liWrap {
+		padding: 10px;
+		display: flex;
+		align-items: center;
+		gap: 10px;
+	}
+	&__icon {
+		width: 30px;
+		height: 30px;
+		& img {
+			width: 100%;
+			height: auto;
+			object-fit: cover;
+		}
+	}
+}
+
+.checkbox {
+	width: 30px;
+	height: 30px;
+	background-color: var(--bg-form);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.5s;
+	overflow: hidden;
+	border-radius: 6px;
+	& svg {
+		opacity: 0;
+		transform: translateY(-20px);
+		transition: all 0.2s;
+	}
+	&__active {
+		background-color: #ffdd2d;
+		& svg {
+			opacity: 1;
+			transform:translateX(0px);
+		}
+	}
+
+}

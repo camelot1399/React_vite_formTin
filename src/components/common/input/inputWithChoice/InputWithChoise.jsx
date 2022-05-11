@@ -4,7 +4,8 @@ import { Wrapper } from "../../../wrapper/Wrapper";
 import style from './input.module.scss';
 
 
-import { BsChevronDown, BsCheck2 } from "react-icons/bs";
+import { BsChevronDown } from "react-icons/bs";
+import { DropDownList } from "../../dropDown/dropDownList/DropDownList";
 
 export const InputWithChoise = ({categories, setCategories, label}) => {
 
@@ -36,6 +37,10 @@ export const InputWithChoise = ({categories, setCategories, label}) => {
 			const filteredCategories = categoriesSelected.filter(cat => cat.id !== item.id);
 			setCategoriesSelected(filteredCategories);
 		} else {
+			if (categoriesSelected.length === 4) {
+				return false;
+			} 
+
 			setCategoriesSelected([
 				...categoriesSelected,
 				item
@@ -53,8 +58,7 @@ export const InputWithChoise = ({categories, setCategories, label}) => {
 				<div className={style.field}>
 					<div 
 						className={[style.input, active ? style.input__active : ''].join(' ')}
-						onFocus={() => setActive(!active)}
-						onBlur={() => setActive(false)}
+						onClick={() => setActive(!active)}
 					>
 						<div className={style.input__wrap}>
 							<div>
@@ -63,41 +67,18 @@ export const InputWithChoise = ({categories, setCategories, label}) => {
 									{getCategoriesList()}
 								</div>
 							</div>
-							<div>
-								<BsChevronDown />
-							</div>
+
+							<BsChevronDown />
 						</div>
 					</div>
 
-					<div className={style.drop}>
-						<div className={style.drop__wrapper}>
-							<ul className={style.drop__ul}>
-								{categories.length ? (
-									categories.map(item => (
-										<li 
-											key={item.id}
-											className={style.drop__li}
-											onClick={() => handleSelectedCategories(item)}
-										>
-											<div className={style.drop__liWrap}>
-												<div className={[style.checkbox, isExists(item) ? style.checkbox__active : ''].join(' ')}>
-													<BsCheck2 />
-												</div>
-												<div className={style.drop__icon}>
-													<img src={`./images/categories/${item.img}`} alt="" />
-												</div>
-												<div className="drop__name">
-													{item.name}
-												</div>
-											</div>
-										</li>
-									))
-								) : (
-									<li>нет категорий</li>
-								)}
-							</ul>
-						</div>
-					</div>
+					{active && (
+						<DropDownList 
+							categories={categories}
+							handleSelectedCategories={handleSelectedCategories}
+							categoriesSelected={categoriesSelected}
+						/>
+					)}
 				</div>
 				
 				
