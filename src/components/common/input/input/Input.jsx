@@ -14,7 +14,9 @@ export const Input = ({
 	regexp,
 	addError,
 	removeError,
-	placeholder
+	placeholder,
+	incrementPercentFillabilityCount,
+	decrementPercentFillabilityCount
 }) => {
 	const [active, setActive] = useState(false);
 	const [value, setValue] = useState('');
@@ -81,6 +83,8 @@ export const Input = ({
 		if (errors.has(name)) {
 			removeError(name);
 		}
+
+		incrementPercentFillabilityCount(percentFillability);
 	}
 
 	return (

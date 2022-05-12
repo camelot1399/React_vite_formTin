@@ -18,6 +18,7 @@ export const Form = () => {
 		{id: 6, name: '5% - Такси', img: 'taxi.png'},
 		{id: 7, name: '5% - Рестораны', img: 'restorane.png'},
 	]);
+	const [percentFillabilityCount, setPercentFillabilityCount] = useState(0);
 
 	const errorsMessages = {
 		fieldDoNotEmpty: 'Поле обязательно для заполнения',
@@ -37,6 +38,13 @@ export const Form = () => {
 		newErrors.delete(payload);
 		setErrors(newErrors);
 	};
+
+	const incrementPercentFillabilityCount = (number) => {
+		setPercentFillabilityCount(percentFillabilityCount + +number);
+	}
+	const decrementPercentFillabilityCount = (number) => {
+		setPercentFillabilityCount(percentFillabilityCount - +number);
+	}
 
 	return (
 		<Container>
@@ -62,6 +70,8 @@ export const Form = () => {
 						addError={addError}
 						removeError={removeError}
 						placeholder="Михаил"
+						incrementPercentFillabilityCount={incrementPercentFillabilityCount}
+						decrementPercentFillabilityCount={decrementPercentFillabilityCount}
 					/>
 
 					<Input 
@@ -69,11 +79,13 @@ export const Form = () => {
 						name="firstName"
 						hasError={errors.has('firstName') ? true : false}
 						errors={errors}
-						percentFillability="20"
+						percentFillability="10"
 						regexp={regexpIsValidSymbols}
 						addError={addError}
 						removeError={removeError}
 						placeholder="Иванов"
+						incrementPercentFillabilityCount={incrementPercentFillabilityCount}
+						decrementPercentFillabilityCount={decrementPercentFillabilityCount}
 					/>
 
 					<div className="row">
@@ -87,6 +99,8 @@ export const Form = () => {
 							addError={addError}
 							removeError={removeError}
 							placeholder="89169001020"
+							incrementPercentFillabilityCount={incrementPercentFillabilityCount}
+							decrementPercentFillabilityCount={decrementPercentFillabilityCount}
 						/>
 
 						<Input 
@@ -99,13 +113,15 @@ export const Form = () => {
 							addError={addError}
 							removeError={removeError}
 							placeholder="email@mail.ru"
+							incrementPercentFillabilityCount={incrementPercentFillabilityCount}
+							decrementPercentFillabilityCount={decrementPercentFillabilityCount}
 						/>
 					</div>
 
 
 				</div>
 				<div className={style.form__right}>
-					уже заполнено
+					уже заполнено {percentFillabilityCount} %
 				</div>
 			</div>
 		</Container>	
