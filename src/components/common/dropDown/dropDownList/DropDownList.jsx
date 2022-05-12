@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { BsCheck2 } from "react-icons/bs";
 import { isExists } from "../../../../../tools/helpers";
 // @ts-ignore
@@ -14,16 +14,23 @@ export const DropDownList = ({
 }) => {
 	const targetInput = useRef(null);
 
+	useEffect(() => {
+		setListener();
+	}, []);
+
+	const setListener = useCallback(() => {
+		if (active) {
+			document.addEventListener('click', (e) => {
+				if (!e.target.classList.contains('dropBlock')) {
+					setActive(false)
+				}
+			})
+		}
+	}, [active]);
+
 	const onButtonClick = () => {
 		targetInput.current.focus();
 	}
-
-	//useEffect(() => {
-	//	if (active) {
-	//		console.log('да');
-	//		onButtonClick();
-	//	}
-	//}, [active]);
 
 	return (
 		<div className={style.drop}>
@@ -34,9 +41,9 @@ export const DropDownList = ({
 							<li 
 								key={item.id}
 								className={style.drop__li}
-								onClick={() => handleSelectedCategories(item)}
+								onClick={(e) => handleSelectedCategories(item)}
 							>
-								<div className={style.drop__liWrap}>
+								<div className={[style.drop__liWrap, 'dropBlock'].join(' ')}>
 									<div className={[style.checkbox, isExists(item, categoriesSelected) ? style.checkbox__active : ''].join(' ')}>
 										<BsCheck2 />
 									</div>
@@ -56,7 +63,6 @@ export const DropDownList = ({
 						<input 
 							type="text" 
 							ref={targetInput} 
-							onBlur={() => setActive(false)}
 						/>
 				</ul>
 			</div>

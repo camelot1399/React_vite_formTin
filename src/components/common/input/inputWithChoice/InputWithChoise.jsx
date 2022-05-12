@@ -60,15 +60,15 @@ export const InputWithChoise = ({categories, setCategories, label}) => {
 	return (
 		<>
 			<Wrapper>
-				<div className={style.fields}>
+				<div className={[style.fields, 'dropBlock'].join(' ')}>
 					<div 
 						className={[style.input, active ? style.input__active : ''].join(' ')}
 						onClick={() => setActive(!active)}
 					>
-						<div className={style.input__wrap}>
+						<div className={[style.input__wrap, 'dropBlock'].join(' ')}>
 							<div>
-								<div className={[style.input__label, categoriesSelected.length ? style.active : ''].join(' ')}>{label}</div>
-								<div className={style.selectedCategories}>
+								<div className={[style.input__label, categoriesSelected.length ? style.active : '', 'dropBlock'].join(' ')}>{label}</div>
+								<div className={[style.selectedCategories, 'dropBlock'].join(' ')}>
 									{getCategoriesList()}
 								</div>
 							</div>
