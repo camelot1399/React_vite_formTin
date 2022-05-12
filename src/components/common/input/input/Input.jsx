@@ -13,7 +13,8 @@ export const Input = ({
 	percentFillability,
 	regexp,
 	addError,
-	removeError
+	removeError,
+	placeholder
 }) => {
 	const [active, setActive] = useState(false);
 	const [value, setValue] = useState('');
@@ -108,6 +109,7 @@ export const Input = ({
 								ref={inputTarget}
 								className={style.input__typeValue}
 								name={name}
+								placeholder={active ? placeholder : ''}
 							/>
 						</div>
 

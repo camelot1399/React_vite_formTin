@@ -70,3 +70,6 @@ button {
 	flex-direction: column;
 }
 
+input::placeholder {
+	color: rgba(0,0,0,.3)
+}

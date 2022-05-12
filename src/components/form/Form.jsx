@@ -61,6 +61,7 @@ export const Form = () => {
 						regexp={regexpIsValidSymbols}
 						addError={addError}
 						removeError={removeError}
+						placeholder="Михаил"
 					/>
 
 					<Input 
@@ -72,6 +73,7 @@ export const Form = () => {
 						regexp={regexpIsValidSymbols}
 						addError={addError}
 						removeError={removeError}
+						placeholder="Иванов"
 					/>
 
 					<div className="row">
@@ -84,6 +86,7 @@ export const Form = () => {
 							regexp={regexpisValidMobile}
 							addError={addError}
 							removeError={removeError}
+							placeholder="89169001020"
 						/>
 
 						<Input 
@@ -95,6 +98,7 @@ export const Form = () => {
 							regexp={regexpIsEmail}
 							addError={addError}
 							removeError={removeError}
+							placeholder="email@mail.ru"
 						/>
 					</div>
 
