@@ -55,3 +55,18 @@ button {
 	color: yellow;
 }
 
+.row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	gap: 20px;
+}
+
+.column {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-direction: column;
+}
+

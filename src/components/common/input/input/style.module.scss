@@ -32,7 +32,6 @@
 	&__dropIcon {
 		transition: all 0.2s;
 	}
-
 	&__active {
 		background-color: white;
 		border: 1px solid #ccc;
@@ -60,10 +59,22 @@
 			font-size: 12px;
 		}
 	}
+	&__error {
+		border: 1px solid red;
+		background: rgba(224,31,25,.12);
+	}
 
 }
 
 .value {
 	font-size: 14px;
 	color: rgba(0,0,0,.8);
+}
+
+.persent__wrapper {
+	color: white;
+	background: #00b92d;
+	border-radius: 15px;
+	padding: 5px;
+	font-size: 12px;
 }
