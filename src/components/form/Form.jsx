@@ -17,26 +17,26 @@ export const Form = () => {
 		{id: 5, name: '5% - Спорттовары', img: 'sportmaster.png'},
 		{id: 6, name: '5% - Такси', img: 'taxi.png'},
 		{id: 7, name: '5% - Рестораны', img: 'restorane.png'},
-	])
+	]);
 
 	const errorsMessages = {
 		fieldDoNotEmpty: 'Поле обязательно для заполнения',
-		someErrorText: 'Ошибка ввода текста'
-	}
+		someErrorText: 'Ошибка ввода текста',
+		formatPhone: 'Формат номера телефона: 89169001020'
+	};
 
 	const addError = ({name, msg}) => {
 		setErrors(new Map([
 			...errors,
 			[name, errorsMessages[msg]]
 		]));
-	}
+	};
 
 	const removeError = (payload) => {
-		console.log('removeError', payload);
 		const newErrors = new Map(errors);
 		newErrors.delete(payload);
 		setErrors(newErrors);
-	}
+	};
 
 	return (
 		<Container>
@@ -55,7 +55,6 @@ export const Form = () => {
 					<Input 
 						label="Введите Имя"
 						name="lastName"
-						setErrors={setErrors}
 						hasError={errors.has('lastName') ? true : false}
 						errors={errors}
 						percentFillability="20"
@@ -67,7 +66,6 @@ export const Form = () => {
 					<Input 
 						label="Введите Фамилию"
 						name="firstName"
-						setErrors={setErrors}
 						hasError={errors.has('firstName') ? true : false}
 						errors={errors}
 						percentFillability="20"
@@ -80,7 +78,6 @@ export const Form = () => {
 						<Input 
 							label="Мобильный телефон"
 							name="mobile"
-							setErrors={setErrors}
 							hasError={errors.has('mobile') ? true : false}
 							errors={errors}
 							percentFillability="20"
@@ -92,7 +89,6 @@ export const Form = () => {
 						<Input 
 							label="Электронная почта"
 							name="email"
-							setErrors={setErrors}
 							hasError={errors.has('email') ? true : false}
 							errors={errors}
 							percentFillability={null}

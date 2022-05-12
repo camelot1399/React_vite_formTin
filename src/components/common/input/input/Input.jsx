@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { Wrapper } from "../../../wrapper/Wrapper";
 // @ts-ignore
 import style from './style.module.scss';
@@ -8,7 +8,6 @@ import { CError } from "../../cerror/CError";
 export const Input = ({
 	label,
 	name, 
-	setErrors,
 	hasError,
 	errors,
 	percentFillability,
@@ -35,6 +34,7 @@ export const Input = ({
 
 	const percent = () => <div className={style.persent__wrapper}>+{percentFillability}%</div>;
 	const onBlurInput = () => {
+		setActive(false);
 		setError();
 	}
 
@@ -44,28 +44,36 @@ export const Input = ({
 			return true;
 		}
 
-		if (e.match(regexp())) {
-			setValue(e);
-		}
-		
-		setError(e);	
+		removeError(name);
+
+		setValue(e);
 	}
 
-	const setError = (e = null) => {
-		
+	const setError = (e = null) => {		
 		if (e === null && value === '') {
 			addError({
 				name,
 				msg: 'fieldDoNotEmpty'
 			});
+
 			return false;
 		}
 
-		if (e !== null && !e.match(regexp())) {
+		if (e !== null && !value.match(regexp())) {
 			addError({
 				name,
 				msg: 'someErrorText'
 			});
+
+			return false;
+		}
+
+		if (e === null && !value.match(regexp())) {
+			addError({
+				name,
+				msg: 'someErrorText'
+			});
+
 			return false;
 		}
 
