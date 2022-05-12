@@ -8,6 +8,8 @@
 	transition: all 0.6s;
 	cursor: pointer;
 	
+	font-family: var(--family);
+	
 	&__wrap {
 		padding: 0 16px;
 		display: flex;
@@ -27,7 +29,7 @@
 		width: 100%;
 		background: none;
 		color: rgba(0, 0, 0, 0.8);
-		font-size: 14px;
+		font-size: adaptive(14,16,340,1280);
 		transition: all 0.2s;
 		cursor: pointer;
 	}
@@ -45,7 +47,7 @@
 		}
 		& .input__label {
 			transform: translate(0px, 0px);
-			font-size: 12px;
+			font-size: adaptive(10,12,340,1280);
 		}
 		& .selectedCategories {
 			height: 10px;
@@ -58,7 +60,7 @@
 		transform: translate(10px, 10px);
 		&.active {
 			transform: translate(0px, 0px);
-			font-size: 12px;
+			font-size: adaptive(10,12,340,1280);
 		}
 	}
 	&__error {
@@ -69,7 +71,7 @@
 }
 
 .value {
-	font-size: 14px;
+	font-size: adaptive(12,16,340,1280);
 	color: rgba(0,0,0,.8);
 }
 
@@ -78,5 +80,5 @@
 	background: #00b92d;
 	border-radius: 15px;
 	padding: 5px;
-	font-size: 12px;
+	font-size: adaptive(10,12,340,1280);
 }

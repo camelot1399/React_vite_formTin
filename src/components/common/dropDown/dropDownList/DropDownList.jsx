@@ -43,7 +43,7 @@ export const DropDownList = ({
 									<div className={style.drop__icon}>
 										<img src={`./images/categories/${item.img}`} alt="" />
 									</div>
-									<div className="drop__name">
+									<div className={style.drop__name}>
 										{item.name}
 									</div>
 								</div>

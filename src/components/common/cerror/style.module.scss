@@ -1,7 +1,9 @@
+@import '../../../assets/scss/base/mixins.scss';
+
 .error {
 	&__msg {
 		color: red;
 		margin-top: 10px;
-		font-size: 12px;
+		font-size: adaptive(12,14,340,1280);
 	}
 }
