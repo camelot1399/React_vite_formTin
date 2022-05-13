@@ -8,7 +8,8 @@ import { isExists } from "../../../../../tools/helpers";
 
 export const InputDropDown = ({
 	label,
-	list
+	list,
+	multi
 }) => {
 	const [active, setActive] = useState(false);
 	const [selectedItems, setSelectedItems] = useState([]);
@@ -42,18 +43,24 @@ export const InputDropDown = ({
 	}
 
 	const handleSelectedItems = (item) => {
-		if (isExists(item, selectedItems)) {
-			const filteredCategories = selectedItems.filter(cat => cat.id !== item.id);
-			setSelectedItems(filteredCategories);
+		if (multi) {
+			
+			if (isExists(item, selectedItems)) {
+				const filteredCategories = selectedItems.filter(cat => cat.id !== item.id);
+				setSelectedItems(filteredCategories);
+			} else {
+				if (selectedItems.length === 4) {
+					return false;
+				} 
+	
+				setSelectedItems([
+					...selectedItems,
+					item
+				])
+			}
 		} else {
-			if (selectedItems.length === 4) {
-				return false;
-			} 
-
-			setSelectedItems([
-				...selectedItems,
-				item
-			])
+			setSelectedItems([item]);
+			setActive(false);
 		}
 	}
 
@@ -75,10 +82,10 @@ export const InputDropDown = ({
 						className={[style.input, active ? style.input__active : ''].join(' ')}
 						onClick={() => setActive(!active)}
 					>
-						<div className={[style.input__wrap, dropZone].join(' ')}>
-							<div className={dropZone}>
-								<div className={[style.input__label, selectedItems.length ? style.active : '', dropZone].join(' ')}>{label}</div>
-								<div className={[style.selectedItems, dropZone].join(' ')}>
+						<div className={style.input__wrap}>
+							<div>
+								<div className={[style.input__label, selectedItems.length ? style.active : ''].join(' ')}>{label}</div>
+								<div className={style.selectedItems}>
 									{getCategoriesList()}
 								</div>
 							</div>

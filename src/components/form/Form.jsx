@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { regexpIsEmail, regexpisValidMobile, regexpIsValidSymbols } from "../../../tools/regexp";
 import { Button } from "../common/button/Button";
 import { Input } from "../common/input/input/Input";
 import { InputDropDown } from "../common/input/inputDropDown/InputDropDown";
-import { InputWithChoise } from "../common/input/inputWithChoice/InputWithChoise";
 import { Container } from "../container/Container";
 import { Wrapper } from '../wrapper/Wrapper';
 // @ts-ignore
@@ -64,14 +63,10 @@ export const Form = () => {
 							<h4 className={style.form__label}>Заполните заявку за 5 минут</h4>
 						</Wrapper>
 
-						{/*<InputWithChoise 
-							categories={categories}
-							setCategories={setCategories}
-							label='Выберите повышенный кэшбэк (четыре категории)'
-						/>*/}
 						<InputDropDown 
 							label="Выберите повышенный кэшбэк (четыре категории*"
 							list={categories}
+							multi
 						/>
 
 						<Input 
@@ -149,6 +144,7 @@ export const Form = () => {
 						<InputDropDown 
 							label="Гражданство*"
 							list={nationality}
+							multi={false}
 						/>
 					</div>
 

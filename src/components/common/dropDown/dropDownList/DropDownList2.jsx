@@ -22,7 +22,7 @@ export const DropDownList2 = ({
 	const setListener = useCallback(() => {
 		if (active) {
 			document.addEventListener('click', (e) => {
-				if (!e.target.classList.contains(zoneName)) {
+				if (!e.target.closest(`.${zoneName}`)) {
 					setActive(false)
 				}
 			})
@@ -44,7 +44,7 @@ export const DropDownList2 = ({
 								className={style.drop__li}
 								onClick={(e) => handleSelectedItems(item)}
 							>
-								<div className={[style.drop__liWrap, zoneName].join(' ')}>
+								<div className={style.drop__liWrap}>
 									<div className={[style.checkbox, isExists(item, selectedItems) ? style.checkbox__active : ''].join(' ')}>
 										<BsCheck2 />
 									</div>
