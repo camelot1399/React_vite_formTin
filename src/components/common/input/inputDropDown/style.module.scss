@@ -1,5 +1,10 @@
 @import '../../../../assets/scss/base/mixins.scss';
 
+.fields {
+	width: 100%;
+	position: relative;
+}
+
 .input {
 	background-color: var(--bg-form);
 	border: 1px solid var(--bg-form);
@@ -45,4 +50,9 @@
 		}
 	}
 
+}
+
+.selectedItems {
+	font-size: adaptive(10,13,340,1280);
+	color: rgba(0,0,0,.8);
 }

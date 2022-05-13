@@ -5,12 +5,13 @@ import { isExists } from "../../../../../tools/helpers";
 import style from './style.module.scss';
 
 
-export const DropDownList = ({
-	categories, 
-	handleSelectedCategories, 
-	categoriesSelected, 
+export const DropDownList2 = ({
+	list, 
+	handleSelectedItems, 
+	selectedItems, 
 	setActive, 
-	active
+	active,
+	zoneName
 }) => {
 	const targetInput = useRef(null);
 
@@ -21,7 +22,7 @@ export const DropDownList = ({
 	const setListener = useCallback(() => {
 		if (active) {
 			document.addEventListener('click', (e) => {
-				if (!e.target.classList.contains('dropBlock')) {
+				if (!e.target.classList.contains(zoneName)) {
 					setActive(false)
 				}
 			})
@@ -36,15 +37,15 @@ export const DropDownList = ({
 		<div className={style.drop}>
 			<div className={style.drop__wrapper}>
 				<ul className={style.drop__ul}>
-					{categories.length ? (
-						categories.map(item => (
+					{list.length ? (
+						list.map(item => (
 							<li 
 								key={item.id}
 								className={style.drop__li}
-								onClick={(e) => handleSelectedCategories(item)}
+								onClick={(e) => handleSelectedItems(item)}
 							>
-								<div className={[style.drop__liWrap, 'dropBlock'].join(' ')}>
-									<div className={[style.checkbox, isExists(item, categoriesSelected) ? style.checkbox__active : ''].join(' ')}>
+								<div className={[style.drop__liWrap, zoneName].join(' ')}>
+									<div className={[style.checkbox, isExists(item, selectedItems) ? style.checkbox__active : ''].join(' ')}>
 										<BsCheck2 />
 									</div>
 									{item?.img && (

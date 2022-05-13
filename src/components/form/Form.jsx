@@ -20,6 +20,12 @@ export const Form = () => {
 		{id: 6, name: '5% - Такси', img: 'taxi.png'},
 		{id: 7, name: '5% - Рестораны', img: 'restorane.png'},
 	]);
+
+	const [nationality, setNationality] = useState([
+		{id: 1, name: 'Имею гражданство РФ'},
+		{id: 2, name: 'Не имею гражданство РФ'}
+	]);
+
 	const [percentFillabilityCount, setPercentFillabilityCount] = useState(0);
 
 	const errorsMessages = {
@@ -58,10 +64,14 @@ export const Form = () => {
 							<h4 className={style.form__label}>Заполните заявку за 5 минут</h4>
 						</Wrapper>
 
-						<InputWithChoise 
+						{/*<InputWithChoise 
 							categories={categories}
 							setCategories={setCategories}
 							label='Выберите повышенный кэшбэк (четыре категории)'
+						/>*/}
+						<InputDropDown 
+							label="Выберите повышенный кэшбэк (четыре категории*"
+							list={categories}
 						/>
 
 						<Input 
@@ -138,6 +148,7 @@ export const Form = () => {
 
 						<InputDropDown 
 							label="Гражданство*"
+							list={nationality}
 						/>
 					</div>
 
@@ -145,7 +156,7 @@ export const Form = () => {
 						<h4 className={style.form__label}>Настройте карту</h4>
 
 						<div className="row">
-							
+							инпуты
 						</div>
 
 					</div>

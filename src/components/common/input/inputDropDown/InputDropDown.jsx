@@ -3,20 +3,25 @@ import { Wrapper } from "../../../wrapper/Wrapper";
 import { BsChevronDown, BsCheck } from "react-icons/bs";
 // @ts-ignore
 import style from './style.module.scss';
+import { DropDownList2 } from "../../dropDown/dropDownList/DropDownList2";
+import { isExists } from "../../../../../tools/helpers";
 
-export const InputDropDown = ({label}) => {
+export const InputDropDown = ({
+	label,
+	list
+}) => {
 	const [active, setActive] = useState(false);
-	const [categoriesSelected, setCategoriesSelected] = useState([]);
+	const [selectedItems, setSelectedItems] = useState([]);
 	const dropZone = 'dropZone';
 
 	const getCategoriesList = () => {
-		if (!categoriesSelected.length) {
+		if (!selectedItems.length) {
 			return ''
 		} else {
 			let str = '';
-			categoriesSelected.forEach( (el, index) => {
+			selectedItems.forEach( (el, index) => {
 
-				if (index === categoriesSelected.length - 1) {
+				if (index === selectedItems.length - 1) {
 					str += `${el.name}`;
 				} else {
 					str += `${el.name}, `;
@@ -29,10 +34,26 @@ export const InputDropDown = ({label}) => {
 	}
 
 	const isValidCountSelectedCategories = () => {
-		if (categoriesSelected.length === 4) {
+		if (selectedItems.length === 4) {
 			return true
 		} else {
 			return false
+		}
+	}
+
+	const handleSelectedItems = (item) => {
+		if (isExists(item, selectedItems)) {
+			const filteredCategories = selectedItems.filter(cat => cat.id !== item.id);
+			setSelectedItems(filteredCategories);
+		} else {
+			if (selectedItems.length === 4) {
+				return false;
+			} 
+
+			setSelectedItems([
+				...selectedItems,
+				item
+			])
 		}
 	}
 
@@ -56,8 +77,8 @@ export const InputDropDown = ({label}) => {
 					>
 						<div className={[style.input__wrap, dropZone].join(' ')}>
 							<div className={dropZone}>
-								<div className={[style.input__label, categoriesSelected.length ? style.active : '', 'dropBlock'].join(' ')}>{label}</div>
-								<div className={[style.selectedCategories, dropZone].join(' ')}>
+								<div className={[style.input__label, selectedItems.length ? style.active : '', dropZone].join(' ')}>{label}</div>
+								<div className={[style.selectedItems, dropZone].join(' ')}>
 									{getCategoriesList()}
 								</div>
 							</div>
@@ -66,7 +87,17 @@ export const InputDropDown = ({label}) => {
 						</div>
 					</div>
 
-					
+					{active && (
+						<DropDownList2 
+							list={list}
+							handleSelectedItems={handleSelectedItems}
+							selectedItems={selectedItems}
+							setActive={setActive}
+							active={active}
+							zoneName={dropZone}
+						/>
+					)}
+
 				</div>
 			</Wrapper>
 		</>

@@ -1,4 +1,5 @@
 @import '../../assets/scss/base/variables.scss';
+@import '../../assets/scss/base/mixins.scss';
 
 .form {
 	display: flex;
@@ -21,6 +22,7 @@
 		justify-content: space-between;
 		gap: 20px;
 		padding: 10px 0;
+		font-size: adaptive(12,14,340,1280);
 	}
 	&__information {
 		color: var(--secondary-text);

@@ -11,7 +11,6 @@ export const InputWithChoise = ({categories, setCategories, label}) => {
 
 	const [categoriesSelected, setCategoriesSelected] = useState([]);
 	
-
 	const [active, setActive] = useState(false);
 
 	const getCategoriesList = () => {
