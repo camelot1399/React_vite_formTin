@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { regexpIsEmail, regexpisValidMobile, regexpIsValidSymbols } from "../../../tools/regexp";
+import { Button } from "../common/button/Button";
 import { Input } from "../common/input/input/Input";
+import { InputDropDown } from "../common/input/inputDropDown/InputDropDown";
 import { InputWithChoise } from "../common/input/inputWithChoice/InputWithChoise";
 import { Container } from "../container/Container";
 import { Wrapper } from '../wrapper/Wrapper';
@@ -50,74 +52,113 @@ export const Form = () => {
 		<Container>
 			<div className={style.form}>
 				<div className={style.form__left}>
-					<Wrapper>
-						<h4 className={style.form__label}>Заполните заявку за 5 минут</h4>
-					</Wrapper>
 
-					<InputWithChoise 
-						categories={categories}
-						setCategories={setCategories}
-						label='Выберите повышенный кэшбэк (четыре категории)'
-					/>
+					<div className="fieldset">
+						<Wrapper>
+							<h4 className={style.form__label}>Заполните заявку за 5 минут</h4>
+						</Wrapper>
 
-					<Input 
-						label="Введите Имя"
-						name="lastName"
-						hasError={errors.has('lastName') ? true : false}
-						errors={errors}
-						percentFillability="20"
-						regexp={regexpIsValidSymbols}
-						addError={addError}
-						removeError={removeError}
-						placeholder="Михаил"
-						incrementPercentFillabilityCount={incrementPercentFillabilityCount}
-						decrementPercentFillabilityCount={decrementPercentFillabilityCount}
-					/>
+						<InputWithChoise 
+							categories={categories}
+							setCategories={setCategories}
+							label='Выберите повышенный кэшбэк (четыре категории)'
+						/>
 
-					<Input 
-						label="Введите Фамилию"
-						name="firstName"
-						hasError={errors.has('firstName') ? true : false}
-						errors={errors}
-						percentFillability="10"
-						regexp={regexpIsValidSymbols}
-						addError={addError}
-						removeError={removeError}
-						placeholder="Иванов"
-						incrementPercentFillabilityCount={incrementPercentFillabilityCount}
-						decrementPercentFillabilityCount={decrementPercentFillabilityCount}
-					/>
-
-					<div className="row">
 						<Input 
-							label="Мобильный телефон"
-							name="mobile"
-							hasError={errors.has('mobile') ? true : false}
+							label="Введите Имя"
+							name="lastName"
+							hasError={errors.has('lastName') ? true : false}
 							errors={errors}
 							percentFillability="20"
-							regexp={regexpisValidMobile}
+							regexp={regexpIsValidSymbols}
 							addError={addError}
 							removeError={removeError}
-							placeholder="89169001020"
+							placeholder="Михаил"
 							incrementPercentFillabilityCount={incrementPercentFillabilityCount}
 							decrementPercentFillabilityCount={decrementPercentFillabilityCount}
 						/>
 
 						<Input 
-							label="Электронная почта"
-							name="email"
-							hasError={errors.has('email') ? true : false}
+							label="Введите Фамилию"
+							name="firstName"
+							hasError={errors.has('firstName') ? true : false}
 							errors={errors}
-							percentFillability={null}
-							regexp={regexpIsEmail}
+							percentFillability="10"
+							regexp={regexpIsValidSymbols}
 							addError={addError}
 							removeError={removeError}
-							placeholder="email@mail.ru"
+							placeholder="Иванов"
 							incrementPercentFillabilityCount={incrementPercentFillabilityCount}
 							decrementPercentFillabilityCount={decrementPercentFillabilityCount}
+						/>
+
+						<div className="row">
+							<Input 
+								label="Мобильный телефон"
+								name="mobile"
+								hasError={errors.has('mobile') ? true : false}
+								errors={errors}
+								percentFillability="20"
+								regexp={regexpisValidMobile}
+								addError={addError}
+								removeError={removeError}
+								placeholder="89169001020"
+								incrementPercentFillabilityCount={incrementPercentFillabilityCount}
+								decrementPercentFillabilityCount={decrementPercentFillabilityCount}
+							/>
+
+							<Input 
+								label="Электронная почта"
+								name="email"
+								hasError={errors.has('email') ? true : false}
+								errors={errors}
+								percentFillability={null}
+								regexp={regexpIsEmail}
+								addError={addError}
+								removeError={removeError}
+								placeholder="email@mail.ru"
+								incrementPercentFillabilityCount={incrementPercentFillabilityCount}
+								decrementPercentFillabilityCount={decrementPercentFillabilityCount}
+							/>
+						</div>
+
+						<Input 
+							label="Дата рождения"
+							name="bithday"
+							hasError={errors.has('bithday') ? true : false}
+							errors={errors}
+							percentFillability={15}
+							regexp={regexpIsValidSymbols}
+							addError={addError}
+							removeError={removeError}
+							placeholder="01.08.1977"
+							incrementPercentFillabilityCount={incrementPercentFillabilityCount}
+							decrementPercentFillabilityCount={decrementPercentFillabilityCount}
+						/>
+
+						<InputDropDown 
+							label="Гражданство*"
 						/>
 					</div>
 
+					<div className="fieldset">
+						<h4 className={style.form__label}>Настройте карту</h4>
+
+						<div className="row">
+							
+						</div>
+
+					</div>
+
+					<hr className={style.hr}/>
+
+					<div className={style.form__footer}>
+						<div className={style.form__information}>
+							<span>Заполняя форму, я принимаю условия передачи информации</span>
+						</div>
+
+						<Button title="Оформить" />
+					</div>
 
 				</div>
 				<div className={style.form__right}>

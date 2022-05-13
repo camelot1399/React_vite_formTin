@@ -13,6 +13,10 @@
 	--wrapper-w1280-mb: 120px;
 	--wrapper-w760-mb: 60px;
 	--bg-form: #ecf1f7;
+	--bg-button: #ffdd2d;
+	--bg-button-hover: #fcc521;
+	--color-button-text: rgba(0,0,0,0.6);
+	--secondary-text: rgba(0,0,0,.54);
 
 }
 
@@ -72,4 +76,8 @@ button {
 
 input::placeholder {
 	color: rgba(0,0,0,.3)
+}
+
+p {
+	color: var(--secondary-text);
 }

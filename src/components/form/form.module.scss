@@ -15,4 +15,18 @@
 	&__right {
 		flex: 0 1 20%;
 	}
+	&__footer {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 20px;
+		padding: 10px 0;
+	}
+	&__information {
+		color: var(--secondary-text);
+	}
+}
+
+.hr {
+	background: red;
 }
